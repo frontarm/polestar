@@ -10,11 +10,16 @@ Polestar loads commonjs modules from NPM and/or a virtual file system on-demand.
 - Capture errors while loading modules, and forward them as appropriate.
 - Display a loading indicator until the entry point is ready to execute.
 
+```bash
+yarn add polestar
+```
 
 Usage
 -----
 
 ```js
+import { Polestar } from 'polestar'
+
 let polestar = new Polestar({
   /**
    * Any keys set here will be available as globals within all executed code.
