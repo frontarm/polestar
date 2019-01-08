@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "cjs-with-deps": "^1.0.0"
+  },
+  "pathDependencies": {
+    "/index.js": ["cjs-no-deps", "umd-with-deps-and-exports"]
+  }
+}

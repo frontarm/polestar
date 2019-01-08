@@ -1,0 +1,8 @@
+{
+  "dependencies": {},
+  "pathDependencies": {
+    "/cjs-cyclical-a.js": ["./cjs-cyclical-b"],
+    "/cjs-cyclical-b.js": ["./cjs-cyclical-a"],
+    "/index.js": ["./cjs-cyclical-a", "./cjs-cyclical-b"]
+  }
+}

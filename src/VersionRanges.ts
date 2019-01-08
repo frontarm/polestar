@@ -1,0 +1,1 @@
+export type VersionRanges = { [name: string]: string }
