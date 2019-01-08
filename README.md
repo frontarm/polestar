@@ -1,7 +1,7 @@
 Polestar
 ========
 
-*A commonjs-ish module loader for browsers.*
+*A commonjs-ish module loader for browsers, as used in [Demoboard](https://frontarm.com/demoboard/).*
 
 Polestar loads commonjs modules from NPM and/or a virtual file system on-demand. It is highly configurable, allowing you to:
 

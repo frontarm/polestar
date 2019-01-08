@@ -3,13 +3,16 @@
   "author": "James K Nelson <james@jamesknelson.com>",
   "private": true,
   "version": "0.1.0",
-  "description": "Browser-based module loader",
+  "description": "A commonjs-ish module loader for browsers.",
   "license": "MIT",
   "main": "dist/umd/polestar.js",
   "module": "dist/es/polestar.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist/*"
+  ],
+  "tags": [
+    "commonjs"
   ],
   "scripts": {
     "clean": "rimraf dist",
