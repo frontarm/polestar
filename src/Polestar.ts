@@ -351,7 +351,6 @@ export class ModuleWrapper {
     require.resolve = (request) => {
       let result = this.polestar.resolve(request, id, dependencyVersionRanges)
       if (result.type !== ResolutionType.Available) {
-        console.error('unresolvable request:', request, 'in module:', id, 'resolve result:', result)
         throw new UnresolvableError(request, id)
       }
       return result.id
