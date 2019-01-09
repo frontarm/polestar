@@ -151,7 +151,8 @@ export class Polestar {
       result.code,
       result.dependencies || [],
       result.dependencyVersionRanges || {},
-      load.requiredBy
+      load.requiredBy,
+      result.css,
     )
   }
 
@@ -161,9 +162,18 @@ export class Polestar {
     dependencies?: 'umd' | string[],
     dependencyVersionRanges?: VersionRanges,
     requiredBy: ModuleWrapper[] = [], 
+    css?: string,
   ): Promise<ModuleWrapper> {
     if (this.error) {
       return Promise.reject(this.error)
+    }
+
+    if (css) {
+      let head = document.head || document.getElementsByTagName('head')[0]
+      let style = document.createElement('style')
+      style.type = 'text/css'
+      style.appendChild(document.createTextNode(css))
+      head.appendChild(style)
     }
 
     try {
