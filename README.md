@@ -1,7 +1,7 @@
 Polestar
 ========
 
-*A commonjs-ish module loader for browsers, as used in [Demoboard](https://frontarm.com/demoboard/).*
+*A commonjs-ish module loader for browsers, as used in [Demoboard](https://frontarm.com/demoboard/), [Laska](https://laska.io/) and the [MDX Preview extension for VS Code](https://marketplace.visualstudio.com/items?itemName=xyc.vscode-mdx-preview#overview)*
 
 Polestar loads commonjs modules from NPM and/or a virtual file system on-demand. It is highly configurable, allowing you to:
 
