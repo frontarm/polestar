@@ -59,7 +59,7 @@ export class Polestar {
   private nextEntryId = 1
 
   options: PolestarOptions
-  
+
   moduleWrappers: {
     [id: string]: ModuleWrapper
   }
@@ -161,7 +161,7 @@ export class Polestar {
     code: string,
     dependencies?: 'umd' | string[],
     dependencyVersionRanges?: VersionRanges,
-    requiredBy: ModuleWrapper[] = [], 
+    requiredBy: ModuleWrapper[] = [],
     css?: string,
   ): Promise<ModuleWrapper> {
     if (this.error) {
@@ -209,7 +209,7 @@ export class Polestar {
           if (index !== -1) {
             prepareDependencies.splice(index, 1)
           }
-        
+
           moduleWrapper = new ModuleWrapper(this, id, dependencyVersionRanges, function(require, module, exports) {
             let factoryResult = factory.apply(null, (dependencies as string[]).map(function(dep) { return dep === 'exports' ? exports : require(dep) }))
             if (factoryResult !== undefined) {
@@ -251,7 +251,7 @@ export class Polestar {
       return Promise.reject(error)
     }
   }
-  
+
   private handleUnrequiredPrepared = (moduleWrapper: ModuleWrapper): ModuleWrapper => {
     if (!this.hasCalledOnEntry) {
       this.options.onEntry!()
@@ -342,7 +342,14 @@ export class ModuleWrapper {
 
       let requestedWrapper = loader.moduleWrappers[requestedId]
       if (!requestedWrapper.module.loaded) {
-        requestedWrapper.execute()
+        try {
+          requestedWrapper.execute()
+        } catch (e) {
+          // Attach the module so that onError can
+          // communicate in which module the error occurred
+          e.module = requestedWrapper.module;
+          throw e;
+        }
       }
 
       return requestedWrapper.module.exports
